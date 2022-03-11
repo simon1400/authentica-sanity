@@ -29,6 +29,14 @@ export default () =>
             .schemaType('job')
             .documentId('job')
         ),
+        
+      S.listItem()
+        .title('Blog')
+        .child(
+          S.editor()
+            .schemaType('blogSort')
+            .documentId('blogSort')
+        ),
 
       ...S.documentTypeListItems()
           .filter(hiddenDocTypes),

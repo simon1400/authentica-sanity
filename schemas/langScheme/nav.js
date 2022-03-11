@@ -1,5 +1,3 @@
-import Tabs from "sanity-plugin-tabs"
-
 export default [
   {
     title: 'Hlavní menu',

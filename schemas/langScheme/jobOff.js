@@ -8,6 +8,30 @@ export default (local) => ( [
     type: 'string',
   },
   {
+    type: "image",
+    name: "image",
+    title: "Obrazek",
+    fields: [
+      {
+        name: 'caption',
+        type: 'string',
+        title: 'Alt text',
+        options: {
+          isHighlighted: true // <-- make this field easily accessible
+        }
+      },
+      {
+        // Editing this field will be hidden behind an "Edit"-button
+        name: 'attribution',
+        type: 'string',
+        title: 'Title text',
+        options: {
+          isHighlighted: true // <-- make this field easily accessible
+        }
+      }
+    ]
+  },
+  {
     title: 'Slug',
     name: 'slug',
     type: 'slug',
@@ -34,6 +58,44 @@ export default (local) => ( [
     title: 'Telefon',
     name: 'phone',
     type: 'string',
+  },
+  {
+    title: 'Vyhody',
+    name: 'benefits',
+    type: 'array',
+    of: [
+      {
+        type: 'object',
+        name: 'benefitChapter',
+        title: 'Benefit',
+        fields: [
+          {
+            type: 'string',
+            name: 'string',
+            title: 'Nazev'
+          },
+          {
+            type: 'array',
+            name: 'benefits',
+            title: 'Benefit',
+            of: [{
+              type: "reference",
+              to: [{type: "benefits"}]
+            }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    title: 'Lide',
+    name: 'peoples',
+    type: 'array',
+    of: [{
+      type: "reference",
+      name: "people",
+      to: [{type: "people"}]
+    }]
   },
   {
     type: "object",

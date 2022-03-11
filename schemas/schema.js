@@ -13,6 +13,10 @@ import jobOff from './jobOff'
 import job from './job'
 import category from './category'
 import blockContent from './blockContent'
+import blogItem from './blog'
+import blogSort from './blogSort'
+import people from './people'
+import benefits from './benefits'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -22,13 +26,17 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     homepage,
+    blogItem,
     jobOff,
     article,
     nav,
     footer,
     settings,
     job,
+    blogSort,
     category,
-    blockContent
+    blockContent,
+    people,
+    benefits
   ]),
 })
