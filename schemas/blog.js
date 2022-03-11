@@ -1,12 +1,19 @@
 import Tabs from "sanity-plugin-tabs"
-
+import {
+  orderRankField,
+  orderRankOrdering,
+} from '@sanity/orderable-document-list';
 import blog from './langScheme/blog'
 
 export default {
   type: "document",
   title: `Příspěvky v blogu`,
+  orderings: [orderRankOrdering],
   name: `blogItem`,
   fields: [
+    // Minimum required configuration
+    orderRankField({ type: 'blogItem' }),
+    
     {
       name: "content",
       type: "object",

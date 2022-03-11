@@ -1,4 +1,5 @@
 import S from "@sanity/desk-tool/structure-builder";
+import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
 
 const hiddenDocTypes = listItem => ![
   "homepage",
@@ -6,14 +7,16 @@ const hiddenDocTypes = listItem => ![
   "footer",
   "category",
   "settings",
-  "job"
+  "blogSort",
+  "blogItem",
+  "job",
+  "jobOff"
 ].includes(listItem.getId())
 
 export default () =>
   S.list()
     .title("Obsah")
     .items([
-
       S.listItem()
         .title('Homepage')
         .child(
@@ -22,6 +25,8 @@ export default () =>
             .documentId('homepage')
         ),
 
+      S.divider(),
+
       S.listItem()
         .title('Přehled pracovních pozic')
         .child(
@@ -29,6 +34,10 @@ export default () =>
             .schemaType('job')
             .documentId('job')
         ),
+
+      orderableDocumentListDeskItem({ title: "Pracovní pozice", type: 'jobOff'}),
+
+      S.divider(),
         
       S.listItem()
         .title('Blog')
@@ -38,8 +47,14 @@ export default () =>
             .documentId('blogSort')
         ),
 
+      orderableDocumentListDeskItem({title: "Příspěvky v blogu", type: 'blogItem'}),
+
+      S.divider(),
+
       ...S.documentTypeListItems()
           .filter(hiddenDocTypes),
+
+      S.divider(),
 
       S.listItem()
         .title('Navigace')

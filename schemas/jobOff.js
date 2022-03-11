@@ -1,12 +1,19 @@
 import Tabs from "sanity-plugin-tabs"
-
+import {
+  orderRankField,
+  orderRankOrdering,
+} from '@sanity/orderable-document-list';
 import jobOff from './langScheme/jobOff'
 
 export default {
   type: "document",
   title: `Pracovní pozice`,
+  orderings: [orderRankOrdering],
   name: `jobOff`,
   fields: [
+
+    orderRankField({ type: 'jobOff' }),
+
     {
       type: "string",
       name: "title",
